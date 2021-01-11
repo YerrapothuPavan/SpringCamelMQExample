@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: SPRING_CAMEL_TRAINING
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/training
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+      
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/training
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+
+activemq:
+      queuename: queue:inputQueue
+      outqueuename: queue:outputQueue
+    
+#camel:  springboot:    shutdown-timeout: 2    health.indicator.enabled: true
+    
+management:
+  security:
+    enabled: false
+
+    
+
+startRoute: timer:hello?period=50s
+fromRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\In?delete=true&moveFailed=C:\\Users\\863018\\Projects\\Training\\CamelTraining\\Error
+toRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\Out
+
+message: Dev Profile
+---
+spring:
+  profiles: uat
+  datasource:
+    url: jdbc:mysql://localhost:3306/training
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    
+startRoute: timer:hello?period=50s
+fromRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\In?delete=true
+toRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\Out
+
+message: UAT Profile
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/training
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+ 
+startRoute: timer:hello?period=10s
+fromRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\In?delete=true
+toRoute: file://C:\\Users\\863018\\Projects\\Training\\CamelTraining\\Out
+
+message: PROD Profile
