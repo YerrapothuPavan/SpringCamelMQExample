@@ -1,4 +1,4 @@
-package com.example.demo;
+/*package com.example.demo;
 
 
 import org.junit.Test;
@@ -11,4 +11,4 @@ class SpringCamelMqExampleApplicationTests {
 	void contextLoads() {
 	}
 
-}
+}*/
