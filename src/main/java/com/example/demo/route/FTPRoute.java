@@ -15,7 +15,7 @@ import com.example.demo.exception.DataException;
 import com.example.demo.pojo.MyProduct;
 import com.example.demo.pojo.Product;
 import com.example.demo.processor.MySQLProcessor;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
+//import com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException;
 
 //@Component
 public class FTPRoute extends RouteBuilder{
@@ -37,10 +37,10 @@ public class FTPRoute extends RouteBuilder{
 		/*.maximumRedeliveries(2).redeliveryDelay(3000).
 				backOffMultiplier(2));*/
 		
-		onException(MySQLSyntaxErrorException.class).log(LoggingLevel.ERROR,"SQL Exception in Route ${body}");
+		//onException(MySQLSyntaxErrorException.class).log(LoggingLevel.ERROR,"SQL Exception in Route ${body}");
 		//.maximumRedeliveries(2).redeliveryDelay(2000);
 		
-		onException(DataException.class).log(LoggingLevel.ERROR,"Data Exception in Route ${body}");
+		//onException(DataException.class).log(LoggingLevel.ERROR,"Data Exception in Route ${body}");
 		
 		
 		from("{{startRoute}}")
