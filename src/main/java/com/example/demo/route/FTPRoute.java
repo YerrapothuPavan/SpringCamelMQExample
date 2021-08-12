@@ -42,7 +42,7 @@ public class FTPRoute extends RouteBuilder{
 		
 		//onException(DataException.class).log(LoggingLevel.ERROR,"Data Exception in Route ${body}");
 		
-		
+		//FTP Demo
 		from("{{startRoute}}")
 			.log("from time component")
 			.pollEnrich("{{fromRoute}}")
